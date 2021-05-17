@@ -1,11 +1,14 @@
+#!/usr/bin/python3.8
 import os
 import requests
-FILE_PATH = '~/supplier-data/descriptions/'
+PRODUCTION_PATH = '~/supplier-data/descriptions/'
+FILE_PATH = 'test_files/'
 
 def parse_text_file(txt_f):
     fields = ['name', 'weight', 'description', 'image_name']
     field_index = 0
     structure = {}
+    f_root = txt_f.split('/')[-1].split('.')[0]
     try:
         with open(txt_f, 'r') as text:
             for line in text:
@@ -13,8 +16,9 @@ def parse_text_file(txt_f):
                 if key == 'weight':
                     structure[key] = int(line)
                 else:
-                    structure[key] = line
+                    structure[key] = line.rstrip()
                 field_index +=1
+            structure['image_name'] = '{}.jpg'.format(f_root)
             return structure
     except Exception as error:
         print(f'{txt_f} raised {error}')
@@ -35,16 +39,14 @@ def post_json(json_struct):
 if __name__ == '__main__':
     file_structure = []
     # parse the text files and build a json structure of descriptions
-    for infile in os.listdir(FILE_PATH)
+    for infile in os.listdir(FILE_PATH):
         if infile.endswith('.txt'):
             data_dictionary = parse_text_file(f'{FILE_PATH}{infile}')
             file_structure.append(data_dictionary)
-            report_entry = 'name: {}<br><br/>'.format(data_dictionary['name']) +
-                           'weight: {}<br><br/>'.format(data_dictionary['weight']) +
-                           '<br><br/>'
-            report_structure += report_entry 
-                # post the text descriptions to the webserver
+
+    # post the text descriptions to the webserver
     try:
-        post_json(file_structure)
+        print(file_structure)
+        #post_json(file_structure)
     except Exception as error:
         raise error
