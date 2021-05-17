@@ -18,3 +18,8 @@ def upload_file(file_path, url):
         print(f'ERROR: {other_error}')
     else:
         print(f'{count} files uploaded')
+
+if __name__ == '__main__':
+    for infile in os.listdir('~/supplier-data/images/'):
+        if infile.endswith('.jpg'):
+            upload_file(f'{~/supplier-data/images/}{infile}', URL)
