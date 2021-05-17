@@ -14,7 +14,8 @@ def parse_text_file(txt_f):
             for line in text:
                 key = fields[field_index]
                 if key == 'weight':
-                    structure[key] = int(line)
+                    no_lbs = line.strip('lbs')
+                    structure[key] = int(no_lbs)
                 else:
                     structure[key] = line.rstrip()
                 field_index +=1
