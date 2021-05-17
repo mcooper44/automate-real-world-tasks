@@ -1,12 +1,13 @@
-#!usr/bin/python3.8
+#!/usr/bin/python3.8
 
 import os
 from PIL import Image
+production_path = '~supplier-data/images/'
 
 def open_and_process_image(the_image, source_p, conv_type='RGB',
                            new_size=(600,400), new_format='JPEG',
-                           new_ext = '.jpg'
-                           save_loc='~/supplier-data/images/'):
+                           new_ext = '.jpg',
+                           save_loc='test_images/'):
 
     '''
     opens an image file and returns it
@@ -43,5 +44,5 @@ def open_and_process_image(the_image, source_p, conv_type='RGB',
     print(f'converted {process_count} files to {newsize} size + {new_format}')
 
 if __name__ == '__main__':
-    for infile in os.listdir('~supplier-data/images/'):
-        open_and_process_image(infile, '~supplier-data/images/')
+    for infile in os.listdir('test_images/'):
+        open_and_process_image(infile, 'test_images/')
