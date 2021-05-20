@@ -9,7 +9,7 @@ from reportlab.lib import colors
 
 from run import parse_text_file
 
-PRODUCTION_PATH = '~/supplier-data/descriptions/'
+PRODUCTION_PATH = 'supplier-data/descriptions/'
 FILE_PATH = 'test_files/'
 
 def generate_report(attachment, title, paragraph):
