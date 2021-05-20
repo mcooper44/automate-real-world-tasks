@@ -10,7 +10,7 @@ import emails
 
 
 SENDER = 'automation@example.com'
-RECIPIENT = 'username@example.com'
+RECIPIENT = 'username@example.com' # this will need to get changed
 BODY = 'Please check your system and resolve the issue as soon as possible.'
 
 def check_connectivity():
@@ -70,12 +70,11 @@ def email_alert(alert_subject):
 
 if __name__ == '__main__':
     tests = [check_connectivity, check_localhost, get_du, get_memory, get_cpu]
-    while True:
-        for test in tests:
-            outcome = test()
-            print(outcome['str'])
+    for test in tests:
+        outcome = test()
+        print(outcome['str'])
 
-            if outcome['alert']:
-                print(outcome['subject'])
-                #email_alert(outcome['subject'])
-        time.sleep(60) 
+        if outcome['alert']:
+            print(outcome['subject'])
+            # UNCOMMENT THIS WHEN IT'S TIME TO GO LIVE
+            #email_alert(outcome['subject'])
