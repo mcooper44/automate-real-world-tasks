@@ -2,11 +2,14 @@
 
 import os
 from PIL import Image
-production_path = '~supplier-data/images/'
+
+PRODUCTION_PATH = 'supplier-data/images/'
+TESTING_PATH = 'test_images/'
+PATH = TESTING_PATH
 
 def open_and_process_image(the_image, source_p, conv_type='RGB',
                            new_size=(600,400), new_format='JPEG',
-                           new_ext = '.jpg',
+                           new_ext = '.jpeg',
                            save_loc='test_images/'):
 
     '''
@@ -41,5 +44,5 @@ def open_and_process_image(the_image, source_p, conv_type='RGB',
     print(f'converted {the_image} to {new_size} size + {new_format}')
 
 if __name__ == '__main__':
-    for infile in os.listdir('test_images/'):
-        open_and_process_image(infile, 'test_images/')
+    for infile in os.listdir(PATH):
+        open_and_process_image(infile, PATH)
