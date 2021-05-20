@@ -1,7 +1,10 @@
 #!/usr/bin/python3.8
 import requests
+import os
 
 URL = 'http://localhost/upload/'
+PATH = 'supplier-data/images/'
+
 
 def upload_file(file_path, url):
     count = 0 # track how many files go through without error
@@ -20,6 +23,6 @@ def upload_file(file_path, url):
         print(f'{count} files uploaded')
 
 if __name__ == '__main__':
-    for infile in os.listdir('~/supplier-data/images/'):
-        if infile.endswith('.jpg'):
-            upload_file(f'{~/supplier-data/images/}{infile}', URL)
+    for infile in os.listdir(PATH):
+        if infile.endswith('.jpeg'):
+            upload_file(f'{PATH}{infile}', URL)
