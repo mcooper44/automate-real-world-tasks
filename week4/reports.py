@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8
+#/usr/bin/python3.8
 
 import os
 from datetime import datetime
@@ -13,6 +13,10 @@ PRODUCTION_PATH = 'supplier-data/descriptions/'
 FILE_PATH = 'test_files/'
 
 def generate_report(attachment, title, paragraph):
+    '''
+    creates a simple report with a title and then a block
+    of text supplied in the paragraph parameter
+    '''
     styles = getSampleStyleSheet()
     report = SimpleDocTemplate(attachment)
 
