@@ -1,6 +1,8 @@
 #!/usr/bin/python3.8
 import emails
-
+'''
+simple script to signal the completion of uploading images by email
+'''
 
 if __name__ == '__main__':
     sender = 'automation@example.com'
